@@ -1,0 +1,110 @@
+.html {
+  font-family: 'Jost', sans-serif;
+  scroll-behavior: smooth;
+}
+.body {
+  background-color: #FFFFFF;
+  font-family: 'Jost', sans-serif;
+  scroll-behavior: smooth;
+  position: relative;
+}
+.jumbotron {
+  font-family: 'Jost', sans-serif;
+  background-color: black;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 460px;
+  opacity: 0.85;
+  border-radius: .0rem;
+  padding-top: 120px;
+ }
+ .jumbotron h1 {
+   font-size: 50px;
+   text-transform: uppercase;
+   letter-spacing: .2rem;
+   text-align: center;
+   color: #FAFAFA;
+ }
+ .jumbotron p {
+  font-size: 16px;
+  letter-spacing: .15rem;
+  text-align: center;
+  color: #FAFAFA;
+ }
+/* Sticky Footer Classes */
+#sticky-footer {
+  font-family: 'Jost', sans-serif;
+  flex-shrink: none;
+}
+/* Images Blocks */
+.Work-Box {
+  font-family: 'Jost', sans-serif;
+}
+.Work-Box img {
+  position: relative;
+  transition: .2s;
+}
+.Work-Box:hover img {
+  transform: scale(1.1);
+  opacity: 0.45;
+  /* filter: drop-shadow(8px 8px 10px gray); */
+}
+.Work-Box .Work-Image {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background-color: #191919;
+}
+.Work-Box .Work-Info {
+  position: absolute;
+  top: 75%;
+  width: 100%;
+  text-align: center;
+  color: #FAFAFA;
+  opacity: 0;
+  visibility: hidden;
+  margin: 0px;
+  padding-right: 26px;
+  transition: .3s;
+}
+.Work-Box:hover .Work-Info {
+  position: absolute;
+  visibility: visible;
+  opacity: 0.95;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+.Work-Box .Work-Info h6 {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}
+#customtext {
+  font-family: 'Jost', sans-serif;
+  letter-spacing: .18rem;
+  color: black;
+}
+#service {
+  font-family: 'Jost', sans-serif;
+  font-variation-settings: 'wdth' 250, 'wght' 250;
+  font-size: 15px;
+  letter-spacing: .18rem;
+  color: #202020;  
+}
+#service-title {
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 24px; 
+  letter-spacing: .2rem;
+}
+#nav-text {
+  font-family: 'Jost', sans-serif;
+  letter-spacing: .12rem;
+  color: black;
+}
+#copy {
+  font-size: 10px;
+  font-style: italic;
+}

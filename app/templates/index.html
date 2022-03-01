@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <title>{{ site_title }}</title>
+    <link rel="icon" type="image/png" href={{ favicon }}>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="static/assets/bootstrap/css/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="static/assets/bootstrap/css/bootstrap-grid.css" > 
+    <link rel="stylesheet" type="text/css" href="static/assets/lightbox/ekko-lightbox.css" >
+    <link rel="stylesheet" type="text/css" href="static/assets/aos_dist/aos.css" >
+    <link rel="stylesheet" type="text/css" href="static/assets/customs/header.css" >
+    <link rel="stylesheet" type="text/css" href="static/assets/customs/contact.css" >
+    <link rel="stylesheet" type="text/css" href="static/assets/customs/custom.css" >
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/assets/customs/social.css" >
+
+  </head>
+
+  <body>
+
+    <!-- JUMBOTRON IMAGE -->
+    <section class="jumbotron justify-content-center text-center " data-aos="zoom-out-up" id="home" style="background-image: url({{ jumbo.image }})">
+      <div class="container">
+        <br></br>
+        <h1>{{ jumbo.title }}</h1>
+        <p>{{ jumbo.description }}</p>
+      </div>
+    </section>
+
+    <!-- NAVIGATION BAR -->
+    <div class="navigation-wrap bg-light start-header start-style">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-md navbar-light">
+                    
+                        <a class="navbar-brand" target="_blank"><img src="{{ logo_img }}" alt=""></a>	
+                        
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto py-4 py-md-0">
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                  <a class="nav-link" href="#home" id="nav-text">{{ nav_bar.home }}</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="#portfolio-grid" id="nav-text">{{ nav_bar.portfolio }}</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="#services" id="nav-text">{{ nav_bar.services }}</a>
+                                </li>
+                                <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
+                                    <a class="nav-link" href="#contact-me" id="nav-text">{{ nav_bar.contact }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </nav>		
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END NAVIGATION BAR -->
+
+    <main role="main">
+  
+      <!-- PROJECTS GRID BLOCK -->
+      <div class="album py-5 bg-white" id="portfolio-grid">
+
+        <div class="container">
+          <div class="row justify-content-around align-items-center">
+            <div class="col-md-12 col-lg-6 mb-4 mb-lg-0" data-aos="fade-up">
+              <h4 id="customtext">{{ project_title }}</h4>
+            </div>
+            <!-- GRID FILTERS -->
+            <div class="col-md-12 col-lg-6 text-lg-right" data-aos="fade-up" data-aos-delay="100" >
+              <div id="filters" class="filters">
+                <a class="nav-item nav-link button mx-1" data-filter="all">  All  </a>
+                <a class="nav-item nav-link button mx-1" data-filter="proj-wk">  Works  </a>
+                <a class="nav-item nav-link button mx-1" data-filter="proj-st">  Studies  </a>
+              </div>
+            </div>
+          </div>
+          <br> 
+
+          <div class="row justify-content-around align-items-center" id="Work-Gallery" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000" >
+            
+            <!-- Content Block -->
+            {% for work in work_list %}
+            <div class="Work-Box col-12 col-sm-12 col-md-6 col-lg-6 mb-4 filter {{ work.group }}">
+              <!--Link to index 1 to avoid the first image to be displayed in the carrousel (together with the loop.index > 2)-->
+              <a class="Work-Image rounded" href="{{ work.images[1]}}" data-toggle="lightbox" data-gallery="GalleryImg_{{ work.id }}">
+                <img class="img-fluid WorkImage" src="{{ work.images[0]}}">
+              </a>
+              {% for img in work.images %}
+                {% if loop.index > 2 %}
+                  <div data-toggle="lightbox" data-gallery="GalleryImg_{{ work.id }}" data-remote="{{ img }}"></div>
+                {% endif %}
+              {% endfor %}
+              <div class="Work-Info" >
+                <h5>{{ work.category }}</h5>
+                <h6>{{ work.title }}</h6>
+                {% for line in work.description %}
+                <h6>{{ line }} </h6>
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+            <!-- End Content Block -->
+
+          </div>
+        </div>
+      </div>
+      <!-- END PROJECTS GRID BLOCK -->
+
+    <!-- JUMBOTRON IMAGE -->
+    <section class="jumbotron justify-content-center text-center my-4 " style="background-image: url({{ jumbo.image2 }})">
+    </section>
+
+      <!-- SERVICES BLOCK -->
+      <div class="album py-5 bg-white" id="services" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+        <div class="container">
+          <!--TITLE-->
+          <div class="row justify-content-center text-center mb-4 pb-2">
+            <div class="col-6">
+              <h4 class="h4 heading" id='service-title'>{{ services_dict.title }}</h4>
+            </div>
+          </div>
+          <!--END TITLE-->
+          <div class="row justify-content-center mb-4">
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+              <span class="ml-4 mb-10 align-self-center pl-4">
+                <img src={{ services_dict.icon_left }} width="40px" height="40px">
+              </span>
+              <ul class="list-unstyled list-line mt-4">
+                {% for service in services_dict.services_left %}
+                <li id='service' class="mb-2"> -> {{ service }}</li>
+                {% endfor %}
+              </ul>
+            </div>  
+            <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+              <span class="ml-4 mb-10 align-self-center pl-4">
+                <img src={{ services_dict.icon_right }} width="40px" height="40px">
+              </span>
+              <ul class="list-unstyled list-line mt-4">
+                {% for service in services_dict.services_right %}
+                <li id='service' class="mb-2"> -> {{ service }}</li>
+                {% endfor %}
+              </ul>
+            </div> 
+          </div>
+
+        </div>
+      </div>
+                
+
+      <!-- END SERVICES BLOCK-->
+
+    </div>
+  </div>
+</div>
+
+      <!-- CONTACT FORM -->
+  
+      <div class="container" id="contact-me">
+        <div class="row justify-content-around align-items-center" data-aos="fade-up" data-aos-delay="400" data-aos-duration="800">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center mb-4">
+            <h2 id="service-title">{{ nav_bar.contact }}</h2>
+          </div>
+        </div>
+        <div class="row justify-content-around align-items-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="400">
+          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+            <form id="contact-form" class="form" action="" method="POST" role="form" novalidate>
+              {{ form.csrf_token }}
+              {{ form.hidden_tag() }}
+              <div class="form-group" id="service">
+                {{ form.name(class="form-control", placeholder="Name", tabindex="1", id="name", type="text")  }}
+              </div>
+              <div class="form-group" id="service">
+                {{ form.email(class="form-control", placeholder="Mail", tabindex="2", id="email", type="text")  }}
+              </div>
+              <div class="form-group" id="service">
+                {{ form.subject(class="form-control", placeholder="Subject", tabindex="3", id="subject", type="text")  }}
+              </div>
+              <div class="form-group" id="service">
+                  {{ form.message(class="form-control", row="5", cols="50", id="message", placeholder="Message...", tabindex="4")  }}
+              </div>
+              <div class="text-center">
+                {{ form.send(class="btn btn-start-order") }}
+              </div>
+            </form>
+
+            {% for message in get_flashed_messages() %}
+              {% if 'sent' in message %}
+              <div class="alert alert-info flash" role="alert">{{ message }}</div>
+              {% else %}
+                <div class="alert alert-warning flash" role="alert">{{ message }}</div>
+              {% endif %}
+            {% endfor %}
+            
+          </div>
+        </div>
+      </div>
+      <!-- END CONTACT FORM -->
+
+    </main>
+
+    <br></br>
+
+    <footer class="py-4 bg-light text-black-50">
+      <div class="container text-center">
+        <div class="row">
+          <div class="col-12 col-lg-6 mb-2 pt-3" id='copy'>
+            &copy; {{ copyright_info }}
+          </div>
+          <div class="col-12 col-lg-6 mb-2">
+            <div class="social-icons" style="position: absolute; right: 220px;">
+              <a class="social-icon social-icon--linkedin" href={{ social.linkedin }}>
+                <i class="fa fa-linkedin"></i>
+                <div class="tooltip">LinkedIn</div>
+              </a>
+              <a class="social-icon social-icon--instagram" href={{ social.instagram }}>
+                <i class="fa fa-instagram"></i>
+                <div class="tooltip">Instagram</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+  </body>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript" src="static/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="static/assets/lightbox/ekko-lightbox.js"></script>
+  <script type="text/javascript" src="static/assets/aos_dist/aos.js"></script>
+  <script src="static/assets/customs/custom.js"></script>
+  <script src="static/assets/customs/header.js"></script>
+  <script src="static/assets/customs/contact.js"></script>
+  <script src="static/assets/customs/filter.js"></script>
+
+</html>
